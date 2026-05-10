@@ -2,3 +2,9 @@
 .packages
 .pub/
 build/
+
+# Project planning/docs (not for distribution)
+DESIGN.md
+IMPLEMENTATION_PLAN.md
+docs/
+.vscode/
