@@ -1,0 +1,58 @@
+name: Auto-Update Skills
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-skills:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '3.10.8'
+
+      - name: Install dependencies
+        working-directory: tool/study_generator
+        run: dart pub get
+
+      - name: Check and update skills
+        working-directory: tool/study_generator
+        run: dart run bin/generate.dart check-and-update
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          OPENCODE_BASE_URL: ${{ secrets.OPENCODE_BASE_URL }}
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create branch and PR
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          BRANCH="auto-update-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b "$BRANCH"
+          git add skills/ validation/
+          git commit -m "auto: update skills ($(date +%Y-%m-%d))"
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "auto: update skills ($(date +%Y-%m-%d))" \
+            --body "Automated skill update from dart.cn documentation changes. Review validation/ reports and merge if acceptable."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
