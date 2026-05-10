@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   args: ^2.5.0
+  crypto: ^3.0.7
   file: ^7.0.1
   html: ^0.15.5
   http: ^1.2.2
