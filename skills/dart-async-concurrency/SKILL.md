@@ -23,10 +23,12 @@ metadata:
 
 Dart uses a single-threaded event loop with two queues: the **event queue** and the **microtask queue**. All Dart code runs inside an isolate, each with its own event loop. The loop processes events one at a time in the order they arrive.
 
+```dart
 // Conceptual event loop
 while (eventQueue.isNotEmpty) {
   eventQueue.processNextEvent();
 }
+```
 
 Microtasks are scheduled via `scheduleMicrotask()` and are executed before the next event. `Future.then()`, `catchError()`, and `whenComplete()` callbacks always run as microtasks. Direct `Future()` constructor callbacks run synchronously but the completion of a future is propagated via microtask.
 

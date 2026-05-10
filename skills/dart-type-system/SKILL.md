@@ -43,6 +43,7 @@ Dart provides four primitive built-in types essential for most programs. Use the
 Both are subtypes of `num`, which offers operators (`+`, `-`, `*`, `/`) and methods like `abs()`, `ceil()`, `floor()`.
 
 **Literals:**
+```dart
 var i = 42;
 var hex = 0xDEADBEEF;
 var d = 3.14;
@@ -51,6 +52,7 @@ var both = 1;            // int
 double d2 = 1;           // automatically converts to double (1.0)
 num n = 1;
 n += 2.5;                // n now double
+```
 
 **Common properties/methods:**
 ```dart

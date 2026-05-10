@@ -26,8 +26,10 @@ Dart's core collections serve distinct roles. Choose the type that matches your 
 
 Lists are ordered, indexable, and allow duplicates. Use square bracket literals.
 
+```dart
 var numbers = [1, 2, 3]; // List<int>
 var constantList = const [1, 2, 3]; // Compile-time constant
+```
 
 Access elements with `[]` or `elementAt`. Lists implement `Iterable`.
 
