@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
 import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
@@ -8,6 +7,7 @@ import 'package:logging/logging.dart';
 import 'package:study_generator/src/commands/generate_skill_command.dart';
 import 'package:study_generator/src/commands/update_skill_command.dart';
 import 'package:study_generator/src/commands/validate_skill_command.dart';
+import 'package:study_generator/src/commands/check_and_update_command.dart';
 import 'package:study_generator/src/commands/update_readme_command.dart';
 
 Future<void> main(List<String> arguments) async {
@@ -21,25 +21,16 @@ Future<void> main(List<String> arguments) async {
 
   final client = http.Client();
   try {
-    final runner = CommandRunner<void>(
-      'study_generator',
-      'AI-powered skill generator for Dart CN documentation',
-    )
-      ..addCommand(GenerateSkillCommand(
-        logger: logger,
-        httpClient: client,
-      ))
-      ..addCommand(UpdateSkillCommand(
-        logger: logger,
-        httpClient: client,
-      ))
-      ..addCommand(ValidateSkillCommand(
-        logger: logger,
-        httpClient: client,
-      ))
-      ..addCommand(UpdateReadmeCommand(
-        logger: logger,
-      ));
+    final runner =
+        CommandRunner<void>(
+            'study_generator',
+            'AI-powered skill generator for Dart CN documentation',
+          )
+          ..addCommand(GenerateSkillCommand(logger: logger, httpClient: client))
+          ..addCommand(UpdateSkillCommand(logger: logger, httpClient: client))
+          ..addCommand(ValidateSkillCommand(logger: logger, httpClient: client))
+          ..addCommand(CheckAndUpdateCommand(logger: logger, httpClient: client))
+          ..addCommand(UpdateReadmeCommand(logger: logger));
 
     await runner.run(arguments);
     exit(0);
