@@ -5,8 +5,12 @@ class MetadataService {
   String? loadHash(String skillName, String outputDir) {
     final file = File('$outputDir/$skillName/metadata.json');
     if (!file.existsSync()) return null;
-    final json = jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
-    return json['content_hash'] as String?;
+    try {
+      final json = jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
+      return json['content_hash'] as String?;
+    } on FormatException {
+      return null;
+    }
   }
 
   void saveUpdateResult(
@@ -16,9 +20,14 @@ class MetadataService {
     int? grade,
   ) {
     final file = File('$outputDir/$skillName/metadata.json');
-    final Map<String, dynamic> data = file.existsSync()
-        ? jsonDecode(file.readAsStringSync()) as Map<String, dynamic>
-        : <String, dynamic>{};
+    var data = <String, dynamic>{};
+    if (file.existsSync()) {
+      try {
+        data = jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
+      } on FormatException {
+        // Use empty map on malformed JSON
+      }
+    }
     data['skill_name'] = skillName;
     data['content_hash'] = hash;
     data['last_updated'] = DateTime.now().toUtc().toIso8601String();
@@ -32,6 +41,10 @@ class MetadataService {
   Map<String, dynamic> loadMetadata(String skillName, String outputDir) {
     final file = File('$outputDir/$skillName/metadata.json');
     if (!file.existsSync()) return <String, dynamic>{};
-    return jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
+    try {
+      return jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
+    } on FormatException {
+      return <String, dynamic>{};
+    }
   }
 }

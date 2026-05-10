@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import 'package:logging/logging.dart';
-
 import '../models/skill_params.dart';
 import '../services/opencode_service.dart';
 import '../services/resource_fetcher_service.dart';
@@ -20,8 +18,7 @@ class GenerateSkillCommand extends BaseSkillCommand {
   String get name => 'generate-skill';
 
   @override
-  String get description =>
-      'Generate SKILL.md files from YAML config using AI';
+  String get description => 'Generate SKILL.md files from YAML config using AI';
 
   @override
   Future<void> runSkill(

@@ -1,10 +1,8 @@
 import 'dart:io';
 
-import 'package:logging/logging.dart';
 import 'package:yaml/yaml.dart';
 
 import '../models/skill_params.dart';
-import '../services/markdown_converter.dart';
 import '../services/opencode_service.dart';
 import '../services/resource_fetcher_service.dart';
 import 'base_skill_command.dart';
@@ -42,8 +40,7 @@ class ValidateSkillCommand extends BaseSkillCommand {
             return;
           }
           final name = item['name'];
-          if (name is! String ||
-              !RegExp(r'^dart-[a-z0-9-]+$').hasMatch(name)) {
+          if (name is! String || !RegExp(r'^dart-[a-z0-9-]+$').hasMatch(name)) {
             logger.severe(
               'Invalid skill name: $name '
               '(must start with dart- and be kebab-case)',
@@ -93,12 +90,18 @@ class ValidateSkillCommand extends BaseSkillCommand {
     final currentContent = skillFile.readAsStringSync();
 
     // Extract metadata from existing SKILL.md
-    final nameMatch =
-        RegExp(r'^name:\s*(.+)$', multiLine: true).firstMatch(currentContent);
-    final dateMatch = RegExp(r'last_modified:\s*(.+)$', multiLine: true)
-        .firstMatch(currentContent);
-    final modelMatch =
-        RegExp(r'model:\s*(.+)$', multiLine: true).firstMatch(currentContent);
+    final nameMatch = RegExp(
+      r'^name:\s*(.+)$',
+      multiLine: true,
+    ).firstMatch(currentContent);
+    final dateMatch = RegExp(
+      r'last_modified:\s*(.+)$',
+      multiLine: true,
+    ).firstMatch(currentContent);
+    final modelMatch = RegExp(
+      r'model:\s*(.+)$',
+      multiLine: true,
+    ).firstMatch(currentContent);
 
     if (nameMatch != null && nameMatch.group(1)!.trim() != skill.name) {
       logger.severe(

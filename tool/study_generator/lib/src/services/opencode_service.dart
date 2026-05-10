@@ -119,11 +119,12 @@ class OpenCodeService {
 
         if (response.statusCode == 200) {
           final data = jsonDecode(response.body) as Map<String, dynamic>;
-          final choices = data['choices'] as List;
+          final choices = (data['choices'] as List<dynamic>?) ?? [];
           if (choices.isEmpty) {
             throw Exception('Empty response from API');
           }
-          final message = choices[0]['message'] as Map<String, dynamic>;
+          final message = (choices[0] as Map<String, dynamic>)['message']
+              as Map<String, dynamic>;
           final text = message['content'] as String?;
           if (text == null || text.isEmpty) {
             throw Exception('Empty content in API response');

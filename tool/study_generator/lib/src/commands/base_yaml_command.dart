@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
 import 'package:logging/logging.dart';
+import 'package:path/path.dart' as p;
 import 'package:yaml/yaml.dart';
 
 import '../models/skill_params.dart';
@@ -12,8 +12,8 @@ abstract class BaseYamlCommand extends Command<void> {
 
   BaseYamlCommand({
     required this.logger,
-    String defaultOutputDir = '../skills',
-    String defaultConfigPath = '../resources/studydart_skills.yaml',
+    String defaultOutputDir = 'skills',
+    String defaultConfigPath = 'resources/studydart_skills.yaml',
   }) {
     argParser
       ..addOption(
@@ -21,10 +21,7 @@ abstract class BaseYamlCommand extends Command<void> {
         help: 'Path to YAML config file',
         defaultsTo: defaultConfigPath,
       )
-      ..addOption(
-        'skill',
-        help: 'Filter by skill name',
-      )
+      ..addOption('skill', help: 'Filter by skill name')
       ..addOption(
         'directory',
         abbr: 'd',
@@ -36,7 +33,7 @@ abstract class BaseYamlCommand extends Command<void> {
   @override
   Future<void> run() async {
     final argResults = this.argResults!;
-    final configPath = argResults['config'] as String;
+    final configPath = _resolveConfig(argResults['config'] as String);
     final outputDir = argResults['directory'] as String;
     final skillFilter = argResults['skill'] as String?;
 
@@ -53,7 +50,7 @@ abstract class BaseYamlCommand extends Command<void> {
     }
 
     final skills = yamlContent
-        .whereType<Map>()
+        .whereType<Map<dynamic, dynamic>>()
         .map((m) => SkillParams.fromJson(m.cast<String, dynamic>()))
         .toList();
 
@@ -74,4 +71,18 @@ abstract class BaseYamlCommand extends Command<void> {
   }
 
   Future<void> runWithSkills(List<SkillParams> skills, String outputDir);
+
+  String _resolveConfig(String configPath) {
+    if (File(configPath).existsSync()) return configPath;
+
+    final name = p.basename(configPath);
+    for (final alt in [
+      'resources/$name',
+      '../resources/$name',
+      '../../resources/$name',
+    ]) {
+      if (File(alt).existsSync()) return alt;
+    }
+    return configPath;
+  }
 }

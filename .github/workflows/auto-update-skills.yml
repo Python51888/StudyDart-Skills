@@ -22,12 +22,11 @@ jobs:
           sdk: '3.10.8'
 
       - name: Install dependencies
-        working-directory: tool/study_generator
         run: dart pub get
+        working-directory: tool/study_generator
 
       - name: Check and update skills
-        working-directory: tool/study_generator
-        run: dart run bin/generate.dart check-and-update
+        run: dart run tool/study_generator/bin/generate.dart check-and-update
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           OPENCODE_BASE_URL: ${{ secrets.OPENCODE_BASE_URL }}

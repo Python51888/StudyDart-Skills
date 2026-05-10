@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:logging/logging.dart';
 import 'package:path/path.dart' as p;
 
 import '../models/skill_params.dart';
@@ -12,24 +11,17 @@ class UpdateReadmeCommand extends BaseYamlCommand {
     super.defaultOutputDir,
     super.defaultConfigPath,
   }) {
-    argParser.addOption(
-      'readme',
-      help: 'Path to README.md',
-    );
+    argParser.addOption('readme', help: 'Path to README.md');
   }
 
   @override
   String get name => 'update-readme';
 
   @override
-  String get description =>
-      'Update README.md with a table of available skills';
+  String get description => 'Update README.md with a table of available skills';
 
   @override
-  Future<void> runWithSkills(
-    List<SkillParams> skills,
-    String outputDir,
-  ) async {
+  Future<void> runWithSkills(List<SkillParams> skills, String outputDir) async {
     // Resolve README path
     String? readmePath = argResults!['readme'] as String?;
     readmePath ??= _findReadme();
@@ -62,13 +54,14 @@ class UpdateReadmeCommand extends BaseYamlCommand {
     final table = buffer.toString();
 
     // Replace or append ## Available Skills section
-    final sectionHeader =
-        RegExp(r'^## Available Skills\s*$', multiLine: true);
+    final sectionHeader = RegExp(r'^## Available Skills\s*$', multiLine: true);
     if (sectionHeader.hasMatch(readmeContent)) {
       final start = readmeContent.indexOf(sectionHeader);
       final afterHeader = readmeContent.indexOf('\n', start);
-      final nextSection =
-          RegExp(r'^## ', multiLine: true).matchAsPrefix(readmeContent, afterHeader + 1);
+      final nextSection = RegExp(
+        r'^## ',
+        multiLine: true,
+      ).matchAsPrefix(readmeContent, afterHeader + 1);
       if (nextSection != null) {
         readmeContent =
             '${readmeContent.substring(0, afterHeader + 1)}\n$table\n\n'

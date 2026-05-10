@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:logging/logging.dart';
 
 import '../models/skill_params.dart';
 import '../services/opencode_service.dart';
@@ -32,14 +31,10 @@ abstract class BaseSkillCommand extends BaseYamlCommand {
       );
   }
 
-  Map<String, String> get _env =>
-      _environment ?? Platform.environment;
+  Map<String, String> get _env => _environment ?? Platform.environment;
 
   @override
-  Future<void> runWithSkills(
-    List<SkillParams> skills,
-    String outputDir,
-  ) async {
+  Future<void> runWithSkills(List<SkillParams> skills, String outputDir) async {
     final apiKey = _env['OPENCODE_API_KEY'];
     final baseUrl = _env['OPENCODE_BASE_URL'];
     final model = _env['OPENCODE_MODEL'] ?? 'deepseek-v4-pro';

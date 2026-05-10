@@ -12,6 +12,7 @@ enum UpdateStatus {
   autoMerged,
   needsReview,
   fetchFailed,
+  changesDetected,
 }
 
 class SkillResult {
@@ -88,7 +89,19 @@ class CheckAndUpdateCommand extends BaseSkillCommand {
   @override
   Future<void> runWithSkills(List<SkillParams> skills, String outputDir) async {
     _results.clear();
-    await super.runWithSkills(skills, outputDir);
+    final isDryRun = argResults!['dry-run'] as bool;
+    if (isDryRun) {
+      for (final skill in skills) {
+        try {
+          await _checkForChanges(skill, outputDir);
+        } on Exception catch (e) {
+          logger.severe('Failed to check ${skill.name}: $e');
+          _results.add(SkillResult.fetchFailed(skill.name, e.toString()));
+        }
+      }
+    } else {
+      await super.runWithSkills(skills, outputDir);
+    }
     _printReport();
   }
 
@@ -99,7 +112,6 @@ class CheckAndUpdateCommand extends BaseSkillCommand {
     OpenCodeService service,
   ) async {
     final threshold = int.parse(argResults!['threshold'] as String);
-    final isDryRun = argResults!['dry-run'] as bool;
 
     final fetcher = ResourceFetcherService(
       httpClient: httpClient,
@@ -124,15 +136,6 @@ class CheckAndUpdateCommand extends BaseSkillCommand {
       if (storedHash != null && storedHash == newHash) {
         logger.info('  No changes detected for ${skill.name}');
         _results.add(SkillResult.skipped(skill.name));
-        return;
-      }
-
-      if (isDryRun) {
-        logger.info('  [DRY RUN] Changes detected for ${skill.name}');
-        _results.add(SkillResult(
-          skillName: skill.name,
-          status: UpdateStatus.autoMerged,
-        ));
         return;
       }
 
@@ -206,6 +209,38 @@ class CheckAndUpdateCommand extends BaseSkillCommand {
     }
   }
 
+  Future<void> _checkForChanges(SkillParams skill, String outputDir) async {
+    final fetcher = ResourceFetcherService(
+      httpClient: httpClient,
+      logger: logger,
+    );
+
+    final combinedMarkdown = await fetcher.fetchAndConvertContent(
+      skill.resources,
+      configDir: Directory(argResults!['config'] as String).parent,
+    );
+
+    if (combinedMarkdown.isEmpty) {
+      logger.warning('No content fetched for ${skill.name}');
+      _results.add(SkillResult.fetchFailed(skill.name, 'Empty content'));
+      return;
+    }
+
+    final newHash = _hashService.computeHash(combinedMarkdown);
+    final storedHash = _metadataService.loadHash(skill.name, outputDir);
+
+    if (storedHash != null && storedHash == newHash) {
+      logger.info('  No changes detected for ${skill.name}');
+      _results.add(SkillResult.skipped(skill.name));
+    } else {
+      logger.info('  [DRY RUN] Changes detected for ${skill.name}');
+      _results.add(SkillResult(
+        skillName: skill.name,
+        status: UpdateStatus.changesDetected,
+      ));
+    }
+  }
+
   void _revertSkillFile(File file, String originalContent) {
     try {
       if (originalContent.isEmpty) {
@@ -225,6 +260,8 @@ class CheckAndUpdateCommand extends BaseSkillCommand {
       switch (result.status) {
         case UpdateStatus.skipped:
           logger.info('${result.skillName}: SKIPPED (no changes)');
+        case UpdateStatus.changesDetected:
+          logger.info('${result.skillName}: CHANGES DETECTED');
         case UpdateStatus.autoMerged:
           logger.info(
             '${result.skillName}: AUTO-MERGED (grade ${result.grade}/100)',
