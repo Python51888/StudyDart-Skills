@@ -9,11 +9,12 @@ metadata:
 
 ## Contents
 
-- **Style**: naming, ordering, formatting
-- **Documentation**: doc comments structure and wording
-- **Usage**: leveraging language features correctly
-- **Design**: API architecture and type safety
-- **Workflow**: step-by-step application with feedback loop
+- [Style](#style-guidelines): naming, ordering, formatting
+- [Documentation](#documentation-guidelines): doc comments structure and wording
+- [Usage](#usage-guidelines): leveraging language features correctly
+- [Design](#design-guidelines): API architecture and type safety
+- [Workflow](#workflow-applying-effective-dart-to-your-code): step-by-step application with feedback loop
+- [Examples](#examples-violation-vs-compliant-code): violation vs. compliant code
 
 ---
 
@@ -306,6 +307,7 @@ Check the diff for any remaining inconsistencies. Run `dart format` one last tim
 
 ### Style
 
+```dart
 // ❌ Violation
 class myClass {
   final String Title;
@@ -317,6 +319,7 @@ class MyClass {
   final String title;
   int pageCount;
 }
+```
 
 ### Documentation
 

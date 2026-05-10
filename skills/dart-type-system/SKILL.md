@@ -321,7 +321,7 @@ var ints = [3.0].map((d) => d.toInt()); // Iterable<int>
 // d inferred as double (downward), return int used to infer map<int>
 ```
 
-## Workflow: Refactoring a Function to a Type‑Safe Generic Version
+## Workflow: Refactoring a Function to a Type-Safe Generic Version
 
 Use this workflow when you have multiple functions that perform identical logic on different concrete types.
 
@@ -404,4 +404,4 @@ class Person implements Comparable<Person> {
 }
 ```
 
-Run `dart analyze` and `dart run` (or `dart test`) to validate. If a type argument fails to satisfy `Comparable`, the compiler reports the error immediately, keeping your code type‑safe.
+Run `dart analyze` and `dart run` (or `dart test`) to validate. If a type argument fails to satisfy `Comparable`, the compiler reports the error immediately, keeping your code type-safe.

@@ -9,13 +9,14 @@ metadata:
 
 ## Contents
 
-- Collections Overview: List, Set, Map
-- Collection Literals with Spread, If, and For
-- Understanding Iterable and Lazy Evaluation
-- Searching and Predicate Methods
-- Termination and Conversion: toList() vs toSet()
-- Building a Data Processing Pipeline
-- Workflow: Implementing Collection Operations
+- [Collections Overview](#collections-overview)
+- [Collection Literals with Spread, If, and For](#collection-literals-with-spread-if-and-for)
+- [Understanding Iterable and Lazy Evaluation](#understanding-iterable-and-lazy-evaluation)
+- [Searching and Predicate Methods](#searching-and-predicate-methods)
+- [Termination and Conversion: toList() vs toSet()](#termination-and-conversion-tolist-vs-toset)
+- [Building a Data Processing Pipeline](#building-a-data-processing-pipeline)
+- [Workflow: Implementing Collection Operations](#workflow-implementing-collection-operations)
+- [Examples](#examples)
 
 ## Collections Overview
 

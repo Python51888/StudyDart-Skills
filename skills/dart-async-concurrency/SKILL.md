@@ -16,6 +16,8 @@ metadata:
 - [Transforming Streams](#transforming-streams)
 - [Running Code in Isolates](#running-code-in-isolates)
 - [Sequential vs Concurrent Execution](#sequential-vs-concurrent-execution)
+- [Workflow: Building an Asynchronous Data Pipeline](#workflow-building-an-asynchronous-data-pipeline)
+- [Examples](#examples)
 
 ## Event Loop and Microtask Queue
 

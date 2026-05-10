@@ -7,10 +7,18 @@ metadata:
 ---
 # Working with Dart Core Libraries
 
-## Overview
+## Contents
+- [SDK Libraries](#sdk-libraries)
+- [Working with `dart:core`](#working-with-dartcore)
+- [Working with `dart:convert`](#working-with-dartconvert)
+- [Working with `dart:io`](#working-with-dartio)
+- [Working with `dart:math`](#working-with-dartmath)
+- [Workflow: Building a Data Processing Pipeline](#workflow-building-a-data-processing-pipeline)
+- [Examples](#examples)
+
 Leverage Dart's built-in SDK libraries to perform common tasks: file I/O, JSON serialization, mathematical computations, string and URI manipulation. This skill covers `dart:core`, `dart:convert`, `dart:io`, and `dart:math`—with an end-to-end workflow that reads a JSON configuration file, applies math operations, and writes a result file.
 
-## Understanding Dart SDK Library Layers
+## SDK Libraries
 
 | Library | Role |
 |---------|------|
@@ -27,6 +35,7 @@ Leverage Dart's built-in SDK libraries to perform common tasks: file I/O, JSON s
 ## Working with `dart:core`
 
 ### String and RegExp operations
+```dart
 final phrase = 'Never odd or even';
 
 // Searching
@@ -50,6 +59,7 @@ final sb = StringBuffer()
   ..write('Dart ')
   ..writeAll(['is', 'fun'], ' ');
 sb.toString();                       // 'Dart is fun'
+```
 
 For Unicode grapheme clusters prefer package `characters`.
 
@@ -383,6 +393,39 @@ After each change: **Run → Inspect → Fix → Re‑run** until:
 - Unknown operation tells the user which operations are valid.
 - Successful run produces the correct output file.
 
+#### 8. Conditional Logic Patterns
+
+Use conditional branching to handle different scenarios. Dart supports `if`‑`else` chains, `switch` statements, and null‑aware operators for concise control flow:
+
+```dart
+// If‑else chain for operation selection
+if (operation == 'sqrt') {
+  results = numbers.map((n) => sqrt(n.toDouble())).toList();
+} else if (operation == 'square') {
+  results = numbers.map((n) => n * n).toList();
+} else if (operation == 'random_int') {
+  final rng = Random();
+  results = numbers.map((n) => rng.nextInt(n.toInt())).toList();
+} else {
+  print('Unknown operation "$operation". Valid: sqrt, square, random_int');
+  return;
+}
+```
+
+**Ternary operator** for concise inline conditionals:
+```dart
+final outputPath = config.containsKey('output_file')
+    ? config['output_file'] as String
+    : 'result.json';
+```
+
+**Null‑aware operators** (`??`, `??=`, `?.`) avoid explicit null checks:
+```dart
+final path = config['output_file'] as String? ?? 'result.json';   // 如果为 null 则使用默认值
+final name = config['name']?.toUpperCase();                        // 如果为 null 则短路返回 null
+config['counter'] ??= 0;                                           // 如果为 null 则赋值
+```
+
 ### Feedback Loop
 1. Execute `dart run`.
 2. Examine the console output and the output file.
@@ -391,7 +434,7 @@ After each change: **Run → Inspect → Fix → Re‑run** until:
 
 ---
 
-## Complete Example
+## Examples
 
 `bin/config_processor.dart`:
 ```dart
