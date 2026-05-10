@@ -1,0 +1,186 @@
+- name: dart-fundamentals
+  description: "掌握 Dart 语言的基础要素（变量、操作符、控制流、函数、导库），用于编写符合规范的 Dart 代码。"
+  examplePrompt: "使用 Dart 的变量声明和函数定义编写一个基础的应用入口"
+  instructions: |
+    1. 首先确认目标代码需使用的 Dart 版本及空安全模式，确保所有示例默认开启 Sound Null Safety。
+    2. 从变量声明开始，展示 var、final、const 的区别与适用场景，强调类型推断与显式类型的取舍。
+    3. 按优先级介绍操作符（算术、比较、逻辑、位运算），附上操作符重载的基本示例。
+    4. 覆盖控制流：if/else、switch/match、for/while/do-while 循环，每个附一个可运行独立示例。
+    5. 讲解函数定义的完整语法（命名参数、可选位置参数、默认值、箭头语法），推荐使用类型注解。
+    6. 演示库的导入导出：import 前缀、show/hide 过滤、延迟加载 deferred as。
+    7. 总结常见关键字速查表与元数据注解（@deprecated、@override）的用法。
+  resources:
+    - https://dart.cn/language
+    - https://dart.cn/language/variables
+    - https://dart.cn/language/operators
+    - https://dart.cn/language/comments
+    - https://dart.cn/language/loops
+    - https://dart.cn/language/branches
+    - https://dart.cn/language/error-handling
+    - https://dart.cn/language/functions
+    - https://dart.cn/language/metadata
+    - https://dart.cn/language/libraries
+    - https://dart.cn/language/keywords
+
+- name: dart-type-system
+  description: "深入理解 Dart 类型系统（基本类型、泛型、Record、别名），确保类型安全和代码健壮性。"
+  examplePrompt: "定义一个泛型 Record 类型并实现类型别名简化复杂类型声明"
+  instructions: |
+    1. 先回顾 Dart 的内置基本类型（int、double、String、bool），说明每种类型的字面量表达式和常用属性。
+    2. 介绍 Records 元组：位置字段与命名字段的声明、解构、相等性比较及使用场景。
+    3. 深入泛型：泛型类、泛型方法、泛型约束（extends）、协变与逆变的基本理解。
+    4. 展示 Typedef / 类型别名的两种形式：函数类型别名与 inline 类型别名（Dart 3 新特性）。
+    5. 解释 Dart 类型系统的核心原理：static type vs runtime type、类型提升（promotion）与类型推断（inference）。
+    6. 提供将普通函数重构为类型安全泛型版本的步骤示例，确保示例可运行。
+  resources:
+    - https://dart.cn/language/built-in-types
+    - https://dart.cn/language/records
+    - https://dart.cn/language/generics
+    - https://dart.cn/language/typedefs
+    - https://dart.cn/language/type-system
+
+- name: dart-classes-objects
+  description: "设计 Dart 类与对象的层次结构（构造方法、继承、混入、扩展方法），构建可维护的面向对象架构。"
+  examplePrompt: "使用 mixin 和类修饰符设计一个带扩展方法的类层级结构"
+  instructions: |
+    1. 从基础类定义开始：属性声明、构造函数（标准/命名/工厂/const）、初始化列表与 super 参数。
+    2. 展示继承 extends：方法重写、super 调用、抽象类与抽象方法的定义。
+    3. 深入 Mixin：mixin 声明、on 约束、混入顺序与线性化规则、mixin class 的用法。
+    4. 介绍类修饰符体系（base、final、interface、sealed、mixin）及其对外可见性控制。
+    5. 讲解扩展方法与扩展类型：为现有类添加功能的方法与类型包装的区别和使用场景。
+    6. 覆盖枚举（普通枚举与增强枚举）、可调用对象（call() 方法）及相关点号简写。
+    7. 提供类修饰符最佳实践速查表，指导何时使用 sealed class 与 interface class。
+  resources:
+    - https://dart.cn/language/classes
+    - https://dart.cn/language/constructors
+    - https://dart.cn/language/methods
+    - https://dart.cn/language/extend
+    - https://dart.cn/language/mixins
+    - https://dart.cn/language/enums
+    - https://dart.cn/language/dot-shorthands
+    - https://dart.cn/language/extension-methods
+    - https://dart.cn/language/extension-types
+    - https://dart.cn/language/callable-objects
+    - https://dart.cn/language/class-modifiers
+    - https://dart.cn/language/class-modifiers-for-apis
+    - https://dart.cn/language/modifier-reference
+
+- name: dart-pattern-matching
+  description: "使用 Dart 3 的模式匹配特性（Pattern Matching）简化数据解构和分支逻辑。"
+  examplePrompt: "使用模式匹配解构一个嵌套的 Record 并实现 switch 表达式分支"
+  instructions: |
+    1. 首先解释模式匹配的核心概念：模式是对值的"形状"描述，匹配时可同时解构和绑定。
+    2. 依次介绍各类模式：常量模式、变量模式、通配符、List 模式、Map 模式、Record 模式。
+    3. 展示逻辑运算符在模式中的组合：&&（与）、||（或）、括号分组。
+    4. 讲解关系运算符模式：>、<、>=、<= 在 switch 中如何结合 when 子句（guard）使用。
+    5. 演示 switch 表达式/语句的完整写法：with guard clause、exhaustiveness check（穷尽性检查）。
+    6. 提供将传统 if-else 链重构为 switch 模式匹配的逐步示例。
+  resources:
+    - https://dart.cn/language/patterns
+    - https://dart.cn/language/pattern-types
+
+- name: dart-null-safety
+  description: "运用 Dart 健全空安全机制（Sound Null Safety），消除空引用异常并编写类型安全的代码。"
+  examplePrompt: "将现有代码迁移到空安全，使用 null-aware 操作符消除潜在的 NPE"
+  instructions: |
+    1. 从 null 安全的核心语法讲起：可空类型（?）、非空断言（!）、late 延迟初始化。
+    2. 详解 null-aware 操作符：?.（null-aware 访问）、??（if-null）、??=（null-aware 赋值）、?...（null-aware spread）。
+    3. 说明类型提升（Flow Analysis）：类型守卫 if (x != null) 后 x 提为非空、is 检查后的类型窄化。
+    4. 展示从不安全代码迁移到 Null Safety 的步骤：添加 ?、用 late 替代延迟初始化、用 required 标记必需命名参数。
+    5. 强调 sound null safety 的编译器保证：非空变量永不为 null，消除运行时 NPE。
+    6. 提供常见迁移模式对照表（旧写法 → 新写法）及 Dart 3 迁移工具的使用说明。
+  resources:
+    - https://dart.cn/null-safety
+    - https://dart.cn/null-safety/understanding-null-safety
+    - https://dart.cn/resources/dart-3-migration
+
+- name: dart-async-concurrency
+  description: "掌握 Dart 异步与并发编程（Future、async/await、Stream、Isolate），编写高性能无阻塞的应用。"
+  examplePrompt: "使用 Stream 和 async/await 实现一个并发的文件流处理器"
+  instructions: |
+    1. 从事件循环与微任务队列概念入手，解释 Dart 单线程异步模型的核心原理。
+    2. 展示 Future 的创建（Future()、Future.value()、Future.error()）与链式处理（then/catchError/whenComplete）。
+    3. 深入 async/await：标记函数返回类型为 Future<T>、错误处理 try/catch 内联 await 调用。
+    4. 介绍 Stream 类型：单订阅流与广播流的区别、StreamController 创建、listen/await for 消费。
+    5. 展示流变换技巧：map、where、transform、asyncExpand 等方法组合数据管道。
+    6. 讲解 Isolate 的使用：spawn 创建新隔离、SendPort/ReceivePort 通信、compute() 函数的便捷封装。
+    7. 提供"顺序 vs 并发"的代码对比示例，指导何时使用 Future.wait() 与 Stream 并发。
+  resources:
+    - https://dart.cn/language/concurrency
+    - https://dart.cn/language/async
+    - https://dart.cn/language/isolates
+    - https://dart.cn/libraries/async/async-await
+    - https://dart.cn/libraries/async/futures-error-handling
+    - https://dart.cn/libraries/async/using-streams
+    - https://dart.cn/libraries/async/creating-streams
+
+- name: dart-collections-iterables
+  description: "使用 Dart 集合操作与可迭代工具链（List、Set、Map、Iterable），高效处理数据变换。"
+  examplePrompt: "使用 Iterable 方法链对一组数据进行过滤、映射和归约操作"
+  instructions: |
+    1. 先介绍三类集合：List（有序可重复）、Set（无序唯一）、Map（键值对），各自的创建语法与字面量。
+    2. 展示集合操作符：spread（...）、collection-if、collection-for 在集合字面量中的内联用法。
+    3. 深入 Iterable API：map、where、fold、reduce、expand、take、skip 的惰性求值特性与组合使用。
+    4. 说明 firstWhere/orElse、singleWhere、any、every 等查找与断言方法的使用。
+    5. 比较 toList() vs toSet() 的转换开销，强调惰性求值链在 terminate 操作前不执行。
+    6. 提供数据管道示例：从原始 List 经多步 filter-map-reduce 得到最终结果。
+  resources:
+    - https://dart.cn/language/collections
+    - https://dart.cn/libraries/collections/iterables
+
+- name: dart-core-libraries
+  description: "熟练使用 Dart SDK 核心库（dart:core、dart:convert、dart:io、dart:math），避免重复造轮子。"
+  examplePrompt: "使用 dart:io 读取文件并用 dart:convert 解析 JSON 数据"
+  instructions: |
+    1. 汇总 Dart SDK 的库分层结构：核心库、异步库、转换库、IO 库、数学库的功能定位。
+    2. 展示 dart:core 的常用工具：String 与 RegExp 操作、DateTime 与 Duration、Uri 解析与构建。
+    3. 讲解 dart:convert：JSON 编解码（jsonEncode/jsonDecode）、UTF-8/Base64 转换。
+    4. 深入 dart:io：File/readAsString、readAsLines、writeAsString、Directory 操作与路径处理。
+    5. 介绍 dart:math：Random 随机数、Point/Rectangle 几何、数学常量与函数（sin/cos/sqrt）。
+    6. 演示实际用例：读取 JSON 配置文件 → 解析 → 数学计算 → 写入结果文件的完整流程。
+  resources:
+    - https://dart.cn/libraries
+    - https://dart.cn/libraries/dart-core
+    - https://dart.cn/libraries/dart-async
+    - https://dart.cn/libraries/dart-math
+    - https://dart.cn/libraries/dart-convert
+    - https://dart.cn/libraries/dart-io
+
+- name: dart-packages-pub
+  description: "管理 Dart 包生态（Pub 仓库），掌握创建、使用、发布 Package 及工作空间的多包管理。"
+  examplePrompt: "创建一个新的 Dart Package 并配置工作空间管理多个子包"
+  instructions: |
+    1. 从 pubspec.yaml 解析开始：name、version、environment 约束、dependencies 与 dev_dependencies 的区别。
+    2. 介绍包的使用：dart pub add/get/upgrade/remove 命令，版本约束语法（^、>=、<）与依赖覆盖。
+    3. 展示创建 Package 的标准文件结构（lib/src/、test/、example/、CHANGELOG.md）和必要元数据。
+    4. 讲解发布流程：dart pub publish --dry-run 预检查、发布者认证、版本号策略（semver）、安全通告。
+    5. 深入 Dart Workspaces（Monorepo）：工作空间根 pubspec.yaml 的 workspace 字段、多包共享依赖解析。
+    6. 介绍 Hooks 系统与环境变量声明：package:holiday_events 中声明的环境变量与入口点。
+    7. 提供从单包到多包工作空间的迁移步骤示例。
+  resources:
+    - https://dart.cn/tools/pub/packages
+    - https://dart.cn/tools/pub/create-packages
+    - https://dart.cn/tools/pub/publishing
+    - https://dart.cn/tools/pub/dependencies
+    - https://dart.cn/tools/pub/workspaces
+    - https://dart.cn/tools/hooks
+    - https://dart.cn/tools/pub/package-layout
+    - https://dart.cn/tools/pub/versioning
+    - https://dart.cn/libraries/core/environment-declarations
+
+- name: dart-effective-dart
+  description: "遵循 Effective Dart 最佳实践（代码风格、文档、用法、API 设计），编写一致、可维护、高效的 Dart 代码。"
+  examplePrompt: "按照 Effective Dart 风格重构函数命名和文档注释"
+  instructions: |
+    1. 要求 AI 在生成所有代码时遵循 Effective Dart 的四大分类：Style、Documentation、Usage、Design。
+    2. Style：使用 lowerCamelCase 命名变量/方法、UpperCamelCase 命名类/enum/typedef、lowercase_with_underscores 命名文件。
+    3. Documentation：为所有公开 API 写文档注释（///），首句以动词开头概括，附上示例代码块（```dart ... ```）。
+    4. Usage：推荐使用 const 构造对象、避免不必要的 this.、使用 is/is! 而非 as 进行类型检查、使用 collection if/for、使用 ?? 和 ?. 操作符。
+    5. Design：优先组合而非继承、使用 final 修饰不变量、避免返回 null 选择抛出或返回空集合、使用 named constructors 表达意图。
+    6. 提供代码对照示例：违反 Effective Dart 的代码 → 遵循规范的版本。
+  resources:
+    - https://dart.cn/effective-dart
+    - https://dart.cn/effective-dart/style
+    - https://dart.cn/effective-dart/documentation
+    - https://dart.cn/effective-dart/usage
+    - https://dart.cn/effective-dart/design
