@@ -48,7 +48,7 @@ class ResourceFetcherService {
         } else {
           throw Exception(
             'Failed to fetch $resource: HTTP ${response.statusCode}. '
-            'Failing fast to save Gemini tokens.',
+            'Failing fast to save API tokens.',
           );
         }
       } else {

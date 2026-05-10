@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:logging/logging.dart';
 
 import '../models/skill_params.dart';
-import '../services/markdown_converter.dart';
 import '../services/opencode_service.dart';
 import '../services/resource_fetcher_service.dart';
 import 'base_skill_command.dart';

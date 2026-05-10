@@ -19,30 +19,30 @@ void main(List<String> arguments) {
 
   final logger = Logger('study_generator');
 
-  final runner = CommandRunner<void>(
-    'study_generator',
-    'AI-powered skill generator for Dart CN documentation',
-  )
-    ..addCommand(GenerateSkillCommand(
-      logger: logger,
-      httpClient: http.Client(),
-    ))
-    ..addCommand(UpdateSkillCommand(
-      logger: logger,
-      httpClient: http.Client(),
-    ))
-    ..addCommand(ValidateSkillCommand(
-      logger: logger,
-      httpClient: http.Client(),
-    ))
-    ..addCommand(UpdateReadmeCommand(
-      logger: logger,
-    ));
-
   runZonedGuarded(
     () async {
       final client = http.Client();
       try {
+        final runner = CommandRunner<void>(
+          'study_generator',
+          'AI-powered skill generator for Dart CN documentation',
+        )
+          ..addCommand(GenerateSkillCommand(
+            logger: logger,
+            httpClient: client,
+          ))
+          ..addCommand(UpdateSkillCommand(
+            logger: logger,
+            httpClient: client,
+          ))
+          ..addCommand(ValidateSkillCommand(
+            logger: logger,
+            httpClient: client,
+          ))
+          ..addCommand(UpdateReadmeCommand(
+            logger: logger,
+          ));
+
         await runner.run(arguments);
         exit(0);
       } on UsageException catch (e) {

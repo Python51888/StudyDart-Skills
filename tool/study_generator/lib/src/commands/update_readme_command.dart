@@ -11,7 +11,12 @@ class UpdateReadmeCommand extends BaseYamlCommand {
     required super.logger,
     super.defaultOutputDir,
     super.defaultConfigPath,
-  });
+  }) {
+    argParser.addOption(
+      'readme',
+      help: 'Path to README.md',
+    );
+  }
 
   @override
   String get name => 'update-readme';
