@@ -48,7 +48,7 @@ class UpdateReadmeCommand extends BaseYamlCommand {
       );
       final desc = skill.description.replaceAll('\n', ' ').trim();
       final prompt = skill.examplePrompt ?? '';
-      buffer.writeln('| [$skill.name]($link) | $desc | $prompt |');
+      buffer.writeln('| [${skill.name}]($link) | $desc | $prompt |');
     }
 
     final table = buffer.toString();
