@@ -2,6 +2,7 @@
 .packages
 .pub/
 build/
+dart.txt
 
 # Project planning/docs (not for distribution)
 DESIGN.md
