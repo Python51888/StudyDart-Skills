@@ -1,6 +1,6 @@
 # studydart-skills
 
-Agent skills for Dart, sourced from [dart.cn](https://dart.cn/docs) documentation and curated open-source projects.
+Agent skills for Dart, sourced from [dart.cn](https://dart.cn/docs) documentation, curated open-source projects, and distilled books.
 
 A collection of skills providing tailored instructions for happy-path Dart app development workflows. Each skill teaches an AI agent the precise steps, conditional logic, and best practices for a specific Dart task.
 
@@ -69,7 +69,7 @@ dart run bin/generate.dart update-readme
 
 ## 书籍蒸馏
 
-使用 `dart-book-distillation` 技能，将 Dart/Flutter 主题书籍蒸馏为一组可执行的 Agent Skills：
+使用 `dart-book-distillation` 技能，将 Dart/Flutter 主题书籍蒸馏为一组可执行的 Agent Skills。每本书蒸馏后，产生的所有技能文件存放在 **`books/<book-slug>/`** 目录下，与现有 `skills/` 下的官方技能格式兼容。
 
 ```bash
 # 在 agent 中触发
@@ -84,9 +84,13 @@ dart run bin/generate.dart update-readme
 # 阶段 4: 压力测试 → 验证 skill 质量
 ```
 
-蒸馏产出的 skills 存放在 `books/<book-slug>/` 下，与现有 `skills/` 下的官方技能格式兼容。
+### 已蒸馏书籍
 
-推荐起始书籍参考 `resources/dart_books.yaml`。全局索引见 `books/INDEX.md`。
+| 书籍 | 作者 | 输出目录 | 描述 |
+|------|------|---------|------|
+| [Hello 算法（Dart 版）](books/hello-algo-dart/SKILL.md) | 靳宇栋（@krahets） | `books/hello-algo-dart/` | 数据结构与算法入门——从复杂度分析、排序搜索到回溯与动态规划 |
+
+> 更多推荐起始书籍见 `resources/dart_books.yaml`。跨书全局索引见 [books/INDEX.md](books/INDEX.md)。
 
 ## 推荐学习路线
 

@@ -27,15 +27,12 @@
     "dart_code_blocks": 14,
     "quality_checks": {
       "has_yaml": true,
-      "has_contents": false,
-      "has_workflow": false,
+      "has_contents": true,
+      "has_workflow": true,
       "has_examples": true,
-      "issues": [
-        "缺少目录",
-        "缺少 Workflow 章节"
-      ]
+      "issues": []
     },
-    "status": "WARN",
+    "status": "PASS",
     "test_prompts": [
       "按照 Dart 算法实现中的常见陷阱与反模式 的 Workflow 执行：识别并避免 Dart 算法实现中的 20+ 个常见陷阱，涵盖递归、排序、查找、DP、哈希表等核心领域",
       "用 Dart 写一个 Dart 算法实现中的常见陷阱与反模式 的示例代码",
@@ -84,25 +81,22 @@
   },
   "sort-search": {
     "skill": "sort-search",
-    "title": "dart-book-hello-algo-sort-search",
+    "title": "排序与搜索策略",
     "description": "掌握常见排序算法的特性对比和二分查找的变体应用，选择最合适的排序/搜索策略",
     "size_kb": 20.5,
     "dart_code_blocks": 12,
     "quality_checks": {
       "has_yaml": true,
-      "has_contents": false,
-      "has_workflow": false,
+      "has_contents": true,
+      "has_workflow": true,
       "has_examples": true,
-      "issues": [
-        "缺少目录",
-        "缺少 Workflow 章节"
-      ]
+      "issues": []
     },
-    "status": "WARN",
+    "status": "PASS",
     "test_prompts": [
-      "按照 dart-book-hello-algo-sort-search 的 Workflow 执行：掌握常见排序算法的特性对比和二分查找的变体应用，选择最合适的排序/搜索策略",
-      "用 Dart 写一个 dart-book-hello-algo-sort-search 的示例代码",
-      "解释 dart-book-hello-algo-sort-search 中的关键概念"
+      "按照 排序与搜索策略 的 Workflow 执行：掌握常见排序算法的特性对比和二分查找的变体应用，选择最合适的排序/搜索策略",
+      "用 Dart 写一个 排序与搜索策略 的示例代码",
+      "解释 排序与搜索策略 中的关键概念"
     ]
   }
 }

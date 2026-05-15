@@ -8,15 +8,9 @@
 ### 《Hello 算法》Dart 版 (`hello-algo-dart`)
 - **作者**: 靳宇栋（@krahets）
 - **出版年**: 2026 (Release 1.3.0)
-- **蒸馏日期**: 2026-05-14
-- **Skills 数量**: 6
-- **Skills**:
-  - `foundations`: 算法思维基础、数据结构分类体系、三段式学习路径
-  - `complexity`: 时间复杂度与空间复杂度分析方法论
-  - `ds-choice`: 8 种数据结构选择决策矩阵
-  - `algorithm-paradigms`: 分治/回溯/DP/贪心四大范式对比与选择
-  - `sort-search`: 9 种排序算法 + 二分查找变体
-  - `code-pitfalls`: 20+ 常见算法陷阱（Dart 版）
+- **蒸馏日期**: 2026-05-14 | **合并为统一技能**: 2026-05-15
+- **Skills 数量**: 1（合并自 6 个原始技能）
+- **Skill**: `dart-algorithms` — 完整六章体系：算法思维基础 → 复杂度分析 → 数据结构选择 → 排序搜索 → 算法范式 → 常见陷阱
 - **交叉引用**: 与 dart-fundamentals、dart-core-libraries、dart-collections-iterables、dart-async-concurrency 互补
 - **详细索引**: [books/hello-algo-dart/INDEX.md](hello-algo-dart/INDEX.md)
 
@@ -33,7 +27,7 @@
 - **交叉引用**: 与现有 skills/ 的关联说明
 -->
 
-暂无已蒸馏书籍。使用 `dart-book-distillation` 技能开始蒸馏你的第一本 Dart 书籍！
+ 
 
 ## 推荐起始书籍
 
