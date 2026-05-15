@@ -39,6 +39,7 @@ dart run bin/generate.dart update-readme
 | [dart-collections-iterables](skills/dart-collections-iterables/SKILL.md) | 使用 Dart 集合操作与可迭代工具链（List、Set、Map、Iterable），高效处理数据变换。 | 使用 Iterable 方法链对一组数据进行过滤、映射和归约操作 |
 | [dart-core-libraries](skills/dart-core-libraries/SKILL.md) | 熟练使用 Dart SDK 核心库（dart:core、dart:convert、dart:io、dart:math），避免重复造轮子。 | 使用 dart:io 读取文件并用 dart:convert 解析 JSON 数据 |
 | [dart-effective-dart](skills/dart-effective-dart/SKILL.md) | 遵循 Effective Dart 最佳实践（代码风格、文档、用法、API 设计），编写一致、可维护、高效的 Dart 代码。 | 按照 Effective Dart 风格重构函数命名和文档注释 |
+| [dart-book-distillation](skills/dart-book-distillation/SKILL.md) | 将 Dart/Flutter 主题书籍蒸馏为一组可执行的 Agent Skills，让书中方法论真正用起来。 | 帮我把《Dart Apprentice》拆成 skills |
 | [dart-fundamentals](skills/dart-fundamentals/SKILL.md) | 掌握 Dart 语言的基础要素（变量、操作符、控制流、函数、导库），用于编写符合规范的 Dart 代码。 | 使用 Dart 的变量声明和函数定义编写一个基础的应用入口 |
 | [dart-null-safety](skills/dart-null-safety/SKILL.md) | 运用 Dart 健全空安全机制（Sound Null Safety），消除空引用异常并编写类型安全的代码。 | 将现有代码迁移到空安全，使用 null-aware 操作符消除潜在的 NPE |
 | [dart-packages-pub](skills/dart-packages-pub/SKILL.md) | 管理 Dart 包生态（Pub 仓库），掌握创建、使用、发布 Package 及工作空间的多包管理。 | 创建一个新的 Dart Package 并配置工作空间管理多个子包 |
@@ -65,6 +66,27 @@ dart run bin/generate.dart update-readme
 | L3 | [dart-oss-image](skills/dart-open-source-projects/dart-oss-image/SKILL.md) | 1.3k | dart-core-libraries |
 
 > 完整项目总览与维护指南参见 [dart-oss SKILL.md](skills/dart-open-source-projects/SKILL.md)
+
+## 书籍蒸馏
+
+使用 `dart-book-distillation` 技能，将 Dart/Flutter 主题书籍蒸馏为一组可执行的 Agent Skills：
+
+```bash
+# 在 agent 中触发
+"帮我蒸馏 books/Dart_Apprentice.pdf"
+
+# Agent 自动执行六阶段蒸馏流水线：
+# 阶段 0: 整书理解 → BOOK_OVERVIEW.md
+# 阶段 1: 5 agent 并行提取 → 候选方法论池
+# 阶段 1.5: 三重验证筛选 → 保留有价值的单元
+# 阶段 2: RIA++ 构造 skill → 每个单元的 SKILL.md
+# 阶段 3: 知识链接 → INDEX.md（单书 + 全局索引）
+# 阶段 4: 压力测试 → 验证 skill 质量
+```
+
+蒸馏产出的 skills 存放在 `books/<book-slug>/` 下，与现有 `skills/` 下的官方技能格式兼容。
+
+推荐起始书籍参考 `resources/dart_books.yaml`。全局索引见 `books/INDEX.md`。
 
 ## 推荐学习路线
 

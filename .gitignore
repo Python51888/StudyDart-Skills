@@ -8,6 +8,7 @@ DESIGN.md
 IMPLEMENTATION_PLAN.md
 docs/
 .vscode/
+openspec/
 
 # Evolution artifacts (local only)
 assets/

@@ -1,0 +1,113 @@
+# Dart 推荐蒸馏书单
+
+# 适合蒸馏的 Dart/Flutter 书籍
+# 特征：有明确方法论、作者决策案例、独特见解（非 API 速查手册）
+
+- slug: dart-apprentice
+  title: "Dart Apprentice"
+  subtitle: "Beyond the Basics"
+  authors: ["Jonathan Sande", "Matt Galloway"]
+  year: 2021
+  language: en
+  level: beginner
+  tags: [fundamentals, null-safety, classes-objects, collections-iterables]
+  recommend_reason: "从零开始讲 Dart 基础，包含大量可操作的模式和对比案例，适合蒸馏为基础方法论 skills"
+  chapters_worthy:
+    - "变量与类型选择（var vs final vs const 的深层理由）"
+    - "空安全实践（null 处理的决策树）"
+    - "集合操作范式（函数式 vs 命令式对比）"
+
+- slug: flutter-apprentice
+  title: "Flutter Apprentice"
+  authors: ["Mike Katz", "Kevin Moore", "Vincent Ngo"]
+  year: 2022
+  language: en
+  level: beginner
+  tags: [fundamentals, async-concurrency, core-libraries]
+  recommend_reason: "Flutter 入门经典，每个 UI 模式背后都有设计决策说明，适合蒸馏 Flutter 组件方法论"
+  chapters_worthy:
+    - "Widget 生命周期与重构时机决策"
+    - "状态管理渐进式选择（setState → Provider → BLoC）"
+    - "网络请求错误处理模式"
+
+- slug: effective-dart-book
+  title: "Effective Dart"
+  authors: ["Dart Team"]
+  year: 2023
+  language: zh
+  level: intermediate
+  tags: [effective-dart, type-system, null-safety]
+  recommend_reason: "Dart 官方的代码风格与 API 设计指南，每个规则都有原理说明和反例，适合蒸馏编码规范类 skills"
+  chapters_worthy:
+    - "API 设计决策框架（命名、参数选择、工厂方法）"
+    - "类型系统最佳实践（何时泛型、何时 dynamic）"
+    - "文档注释规范（如何写有效的文档）"
+
+- slug: data-structures-algorithms-dart
+  title: "Data Structures & Algorithms in Dart"
+  authors: ["Jonathan Sande", "Kelvin Lau", "Vincent Ngo"]
+  year: 2022
+  language: en
+  level: intermediate
+  tags: [collections-iterables, type-system, core-libraries]
+  recommend_reason: "Dart 实现的算法与数据结构，每种数据结构都有'何时使用'的决策矩阵，适合蒸馏算法选择方法论"
+  chapters_worthy:
+    - "集合选择决策树（List vs Set vs Map vs Queue）"
+    - "排序算法选择矩阵（时间 vs 空间 vs 稳定性）"
+    - "图遍历与 Dart 集合 API 的最佳实践"
+
+- slug: dart-design-patterns
+  title: "Dart 设计模式实战"
+  authors: ["社区精选"]
+  year: 2024
+  language: zh
+  level: intermediate
+  tags: [classes-objects, type-system, pattern-matching]
+  recommend_reason: "经典设计模式在 Dart 3 中的实现，利用 sealed class、pattern matching 等新特性，适合蒸馏 Dart 特有的设计模式"
+  chapters_worthy:
+    - "sealed class + pattern matching 替代 Visitor 模式"
+    - "mixin 实现组合优于继承的策略"
+    - "extension type 实现零开销包装器"
+
+# 领域标签体系（与现有 skills/ 对齐）
+domain_tags:
+  fundamentals:
+    name: "Dart 基础"
+    skill: dart-fundamentals
+    keywords: [变量, 控制流, 函数, 库, 操作符]
+  type-system:
+    name: "类型系统"
+    skill: dart-type-system
+    keywords: [泛型, Record, 类型别名, 类型推断]
+  classes-objects:
+    name: "类与对象"
+    skill: dart-classes-objects
+    keywords: [类设计, 继承, mixin, 扩展方法, sealed]
+  pattern-matching:
+    name: "模式匹配"
+    skill: dart-pattern-matching
+    keywords: [switch 表达式, 模式解构, 守卫]
+  null-safety:
+    name: "空安全"
+    skill: dart-null-safety
+    keywords: [nullable, null-aware, late, 迁移]
+  async-concurrency:
+    name: "异步与并发"
+    skill: dart-async-concurrency
+    keywords: [Future, Stream, Isolate, async/await]
+  collections-iterables:
+    name: "集合与可迭代"
+    skill: dart-collections-iterables
+    keywords: [List, Set, Map, Iterable, filter, map]
+  core-libraries:
+    name: "核心库"
+    skill: dart-core-libraries
+    keywords: [dart:io, dart:convert, dart:math]
+  packages-pub:
+    name: "包管理"
+    skill: dart-packages-pub
+    keywords: [pub, 工作空间, 发布, 依赖]
+  effective-dart:
+    name: "Effective Dart"
+    skill: dart-effective-dart
+    keywords: [代码风格, 文档, API 设计, 命名]

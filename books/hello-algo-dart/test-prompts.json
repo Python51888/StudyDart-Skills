@@ -1,0 +1,108 @@
+{
+  "algorithm-paradigms": {
+    "skill": "algorithm-paradigms",
+    "title": "算法范式对比与选择",
+    "description": "掌握分治、回溯、动态规划、贪心四大算法范式的核心思想、适用场景、实现模板和选择决策框架",
+    "size_kb": 24.1,
+    "dart_code_blocks": 16,
+    "quality_checks": {
+      "has_yaml": true,
+      "has_contents": true,
+      "has_workflow": true,
+      "has_examples": true,
+      "issues": []
+    },
+    "status": "PASS",
+    "test_prompts": [
+      "按照 算法范式对比与选择 的 Workflow 执行：掌握分治、回溯、动态规划、贪心四大算法范式的核心思想、适用场景、实现模板和选择决策框架",
+      "用 Dart 写一个 算法范式对比与选择 的示例代码",
+      "解释 算法范式对比与选择 中的关键概念"
+    ]
+  },
+  "code-pitfalls": {
+    "skill": "code-pitfalls",
+    "title": "Dart 算法实现中的常见陷阱与反模式",
+    "description": "识别并避免 Dart 算法实现中的 20+ 个常见陷阱，涵盖递归、排序、查找、DP、哈希表等核心领域",
+    "size_kb": 21.3,
+    "dart_code_blocks": 14,
+    "quality_checks": {
+      "has_yaml": true,
+      "has_contents": false,
+      "has_workflow": false,
+      "has_examples": true,
+      "issues": [
+        "缺少目录",
+        "缺少 Workflow 章节"
+      ]
+    },
+    "status": "WARN",
+    "test_prompts": [
+      "按照 Dart 算法实现中的常见陷阱与反模式 的 Workflow 执行：识别并避免 Dart 算法实现中的 20+ 个常见陷阱，涵盖递归、排序、查找、DP、哈希表等核心领域",
+      "用 Dart 写一个 Dart 算法实现中的常见陷阱与反模式 的示例代码",
+      "解释 Dart 算法实现中的常见陷阱与反模式 中的关键概念"
+    ]
+  },
+  "complexity": {
+    "skill": "complexity",
+    "title": "复杂度分析方法论",
+    "description": "掌握时间复杂度与空间复杂度的分析方法，建立算法效率的量化思维模型",
+    "size_kb": 13.5,
+    "dart_code_blocks": 7,
+    "quality_checks": {
+      "has_yaml": true,
+      "has_contents": true,
+      "has_workflow": true,
+      "has_examples": true,
+      "issues": []
+    },
+    "status": "PASS",
+    "test_prompts": [
+      "按照 复杂度分析方法论 的 Workflow 执行：掌握时间复杂度与空间复杂度的分析方法，建立算法效率的量化思维模型",
+      "用 Dart 写一个 复杂度分析方法论 的示例代码",
+      "解释 复杂度分析方法论 中的关键概念"
+    ]
+  },
+  "ds-choice": {
+    "skill": "ds-choice",
+    "title": "数据结构选择决策",
+    "description": "根据数据特性选择最优数据结构，掌握数组/链表/栈/队列/哈希表/树/堆/图的选择决策框架",
+    "size_kb": 19.1,
+    "dart_code_blocks": 9,
+    "quality_checks": {
+      "has_yaml": true,
+      "has_contents": true,
+      "has_workflow": true,
+      "has_examples": true,
+      "issues": []
+    },
+    "status": "PASS",
+    "test_prompts": [
+      "按照 数据结构选择决策 的 Workflow 执行：根据数据特性选择最优数据结构，掌握数组/链表/栈/队列/哈希表/树/堆/图的选择决策框架",
+      "用 Dart 写一个 数据结构选择决策 的示例代码",
+      "解释 数据结构选择决策 中的关键概念"
+    ]
+  },
+  "sort-search": {
+    "skill": "sort-search",
+    "title": "dart-book-hello-algo-sort-search",
+    "description": "掌握常见排序算法的特性对比和二分查找的变体应用，选择最合适的排序/搜索策略",
+    "size_kb": 20.5,
+    "dart_code_blocks": 12,
+    "quality_checks": {
+      "has_yaml": true,
+      "has_contents": false,
+      "has_workflow": false,
+      "has_examples": true,
+      "issues": [
+        "缺少目录",
+        "缺少 Workflow 章节"
+      ]
+    },
+    "status": "WARN",
+    "test_prompts": [
+      "按照 dart-book-hello-algo-sort-search 的 Workflow 执行：掌握常见排序算法的特性对比和二分查找的变体应用，选择最合适的排序/搜索策略",
+      "用 Dart 写一个 dart-book-hello-algo-sort-search 的示例代码",
+      "解释 dart-book-hello-algo-sort-search 中的关键概念"
+    ]
+  }
+}
